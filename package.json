@@ -1,18 +1,10 @@
 {
-  "name": "testapp",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2",
-    "mongodb": "^3.0.1"
-  },
-  "devDependencies": {},
-  "description": ""
+    "name": "application-name",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "express": "2.5.10",
+        "jade": ">= 0.0.1",
+        "mongodb": "^3.0.1"
+    }
 }
