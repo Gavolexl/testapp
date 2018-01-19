@@ -13,8 +13,8 @@ exports.partials = function (req, res) {
     var name = req.params.name;
     res.render('partials/' + name);
 };
-const noteRoutes = require('./note_routes');
-module.exports = function(app, db) {
-       noteRoutes(app, db);
+
+module.exports = function(app) {
+    require('./note_routes')(app);
     // Тут, позже, будут и другие обработчики маршрутов
 };

@@ -3,52 +3,52 @@
 /* Controllers */
 
 function IndexCtrl($scope, $http) {
-  $http.post('/postslist').
+  $http.post('/companies').
     success(function(data, status, headers, config) {
-      $scope.posts = data.posts;
+      $scope.companies = data.companies;
     });
 }
 
-function AddPostCtrl($scope, $http, $location) {
+function AddCompanyCtrl($scope, $http, $location) {
   $scope.form = {};
-  $scope.submitPost = function () {
-    $http.post('/notes', $scope.form).
+  $scope.submitCompany = function () {
+    $http.post('/company', $scope.form).
       success(function(data) {
         $location.path('/');
       });
   };
 }
 
-function ReadPostCtrl($scope, $http, $routeParams) {
-  $http.get('/notes/' + $routeParams.id).
+function ReadCompanyCtrl($scope, $http, $routeParams) {
+  $http.get('/company/' + $routeParams.id).
     success(function(data) {
-      $scope.post = data.post;
+      $scope.company = data.company;
     });
 }
 
-function EditPostCtrl($scope, $http, $location, $routeParams) {
+function EditCompanyCtrl($scope, $http, $location, $routeParams) {
   $scope.form = {};
-  $http.get('/notes/' + $routeParams.id).
+  $http.get('/company/' + $routeParams.id).
     success(function(data) {
-      $scope.form = data.post;
+      $scope.form = data.company;
     });
 
-  $scope.editPost = function () {
-    $http.put('/notes/' + $routeParams.id, $scope.form).
+  $scope.editCompany = function () {
+    $http.put('/company/' + $routeParams.id, $scope.form).
       success(function(data) {
-        $location.url('/readPost/' + $routeParams.id);
+        $location.url('/viewCompany/' + $routeParams.id);
       });
   };
 }
 
-function DeletePostCtrl($scope, $http, $location, $routeParams) {
-  $http.get('/notes/' + $routeParams.id).
+function DeleteCompanyCtrl($scope, $http, $location, $routeParams) {
+  $http.get('/company/' + $routeParams.id).
     success(function(data) {
-      $scope.post = data.post;
+      $scope.post = data.company;
     });
 
-  $scope.deletePost = function () {
-    $http.delete('/notes/' + $routeParams.id).
+  $scope.deleteCompany = function () {
+    $http.delete('/company/' + $routeParams.id).
       success(function(data) {
         $location.url('/');
       });
