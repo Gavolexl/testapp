@@ -20,6 +20,7 @@ function AddPostCtrl($scope, $http, $location) {
 }
 
 function ReadPostCtrl($scope, $http, $routeParams) {
+    console.log("rrr");
   $http.get('/api/post/' + $routeParams.id).
     success(function(data) {
       $scope.post = data.post;
@@ -27,6 +28,7 @@ function ReadPostCtrl($scope, $http, $routeParams) {
 }
 
 function EditPostCtrl($scope, $http, $location, $routeParams) {
+    console.log("hhh");
   $scope.form = {};
   $http.get('/api/post/' + $routeParams.id).
     success(function(data) {

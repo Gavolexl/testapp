@@ -17,6 +17,7 @@ module.exports = function(app, db) {
         res.render('index');
     });
     app.get('/partials/:name', (req, res) => {
+        console.log("8");
         var name = req.params.name;
         res.render('partials/' + name);
     });
@@ -62,6 +63,7 @@ module.exports = function(app, db) {
     });
 
     app.put ('/api/post/:id', (req, res) => {
+        console.log("put");
         const id = req.params.id;
         const details = { '_id': new ObjectID(id) };
         const note = { text: req.body.body, title: req.body.title };
@@ -75,6 +77,7 @@ module.exports = function(app, db) {
     });
 
     app.get('*', (req,res) => {
+        console.log("9");
         res.render('index');
     });
 
