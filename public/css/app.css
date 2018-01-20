@@ -28,3 +28,68 @@
   content: "";
   padding: 0;
 }
+
+
+
+body{
+  margin: 50px 0 30px 50px;
+  font-family: sans-serif;
+}
+
+.main-menu .menu-button{
+  display: inline-block;
+  margin-right: 30px;
+  padding: 15px 30px;
+  border-radius: 3px;
+}
+
+.main-menu a{
+  text-decoration: none;
+  font-size: 18pt;
+  color: #ffffff;
+}
+
+.main-menu .add-button{
+  background: #4CAF50;
+}
+
+.main-menu .add-button:hover{
+  background: #43A047;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.main-menu .home-button{
+  background: #3949AB;
+}
+
+.main-menu .home-button:hover{
+  background: #283593;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.menu-button img{
+  padding-right: 15px;
+}
+
+.main-container{
+  margin-top: 50px;
+  margin-left: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
