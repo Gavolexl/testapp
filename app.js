@@ -4,7 +4,7 @@ mongoose.Promise = require('bluebird');
 const bodyParser     = require('body-parser');
 const db             = require('./config/db');
 const app            = express.createServer();
-const port = process.env.PORT;
+const port = 8000;
 
 /*app.use(bodyParser.urlencoded({ extended: true }));*/
 app.configure(function(){

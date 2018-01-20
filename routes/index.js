@@ -18,3 +18,4 @@ module.exports = function(app) {
     require('./note_routes')(app);
     // Тут, позже, будут и другие обработчики маршрутов
 };
+

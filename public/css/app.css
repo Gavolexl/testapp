@@ -1,81 +1,81 @@
 /* app css stylesheet */
 
 .menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+    list-style: none;
+    border-bottom: 0.1em solid black;
+    margin-bottom: 2em;
+    padding: 0 0 0.5em;
 }
 
 .menu:before {
-  content: "[";
+    content: "[";
 }
 
 .menu:after {
-  content: "]";
+    content: "]";
 }
 
 .menu > li {
-  display: inline;
+    display: inline;
 }
 
 .menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
+    content: "|";
+    padding-right: 0.3em;
 }
 
 .menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
+    content: "";
+    padding: 0;
 }
 
 
 
 body{
-  margin: 50px 0 30px 50px;
-  font-family: sans-serif;
+    margin: 50px 0 30px 50px !important;
+    font-family: sans-serif !important;
 }
 
 /* Menu buttons */
 
 .main-menu .menu-button{
-  display: inline-block;
-  margin-right: 30px;
-  padding: 15px 30px;
-  border-radius: 3px;
+    display: inline-block;
+    margin-right: 30px;
+    padding: 15px 30px;
+    border-radius: 3px;
 }
 
 .main-menu a{
-  text-decoration: none;
-  font-size: 18pt;
-  color: #ffffff;
+    text-decoration: none;
+    font-size: 18pt;
+    color: #ffffff;
 }
 
 .main-menu .add-button{
-  background: #4CAF50;
+    background: #4CAF50;
 }
 
 .main-menu .add-button:hover{
-  background: #43A047;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background: #43A047;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .main-menu .home-button{
-  background: #3949AB;
+    background: #3949AB;
 }
 
 .main-menu .home-button:hover{
-  background: #283593;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background: #283593;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .menu-button img{
-  padding-right: 15px;
+    padding-right: 15px;
 }
 
 .main-container{
-  margin-top: 50px;
-  margin-left: 25px;
+    margin-top: 50px;
+    margin-left: 25px;
 }
 
 /* Companies tree */
@@ -87,6 +87,42 @@ body{
     padding: 10px;
     text-transform: uppercase;
 }
+
+.tree-container .tree-buttons{
+    display: inline-block;
+}
+
+.tree-container .company-li{
+
+    padding: 20px 0;
+}
+
+.tree-buttons{
+    padding: 10px 0;
+    margin-left: 30px;
+}
+
+.tree-buttons .edit-button, .tree-buttons .delete-button{
+    outline: none !important;
+    text-decoration: none;
+    font-size: 12pt;
+    color: #fff;
+    margin-right: 20px;
+    padding: 12px 15px;
+    background-color: #cccccc;
+    border: none;
+    cursor: pointer;
+}
+
+.tree-buttons .edit-button:hover, .tree-buttons .delete-button:hover{
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.tree-container .company-li{
+    padding: 15px 0;
+}
+
 
 /* Add container */
 
@@ -133,6 +169,89 @@ body{
     background-color: #E53935;
 }
 
+/* Edit container */
+
+.edit-container{
+    background: #f3f3f3;
+    width: 300px;
+    padding: 20px;
+    border-radius: 2px;
+}
+
+.edit-container h2{
+    color: #212121;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.edit-container input, .edit-container select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+.edit-container label, .edit-container p{
+    color: #424242;
+    text-transform: lowercase;
+}
+
+.edit-container button{
+    outline: none !important;
+    background-color: #F44336;
+    font-size: 13pt;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.edit-container button:hover{
+    background-color: #E53935;
+}
+
+/* Delete container */
+
+.delete-container{
+    background: #f3f3f3;
+    width: 300px;
+    padding: 20px;
+    border-radius: 2px;
+}
+
+.delete-container h3{
+    color: #212121;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.delete-container .delete-buttons button{
+    margin: 0 42px;
+    outline: none !important;
+    background-color: #F44336;
+    font-size: 13pt;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.delete-container .yes-button{
+    background-color: #4CAF50 !important;
+}
+
+.delete-container .yes-button:hover{
+    background-color: #43A047 !important;
+}
+
+.delete-container .no-button:hover{
+    background-color: #E53935;
+}
 
 
 

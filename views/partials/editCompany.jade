@@ -1,11 +1,11 @@
-h2 Edit company
-label(for='name') Name:
-  input(ng-model='form.name', name='name')
-p Balance:
-  input(ng-model='form.balance',type='number', name='balance')
-p
-p Parent:
-  select(name='parent')
-    option(ng-value='root', selected="selected")
-    option(ng-repeat='company in companies', ng-value='{{company.name}}') {{company.name}}
-button(ng-click='editCompany()') Edit Company
+div(class='edit-container')
+  h2 Edit company
+  label(for='name') Name:
+    input(ng-model='form.name', name='name')
+  p Balance:
+    input(ng-model='form.balance',type='number', name='balance')
+  p Parent:
+    select(name='parent')
+      option(ng-value='root', selected="selected")
+      option(ng-repeat='company in companies', ng-value='{{company.name}}') {{company.name}}
+  button(ng-click='editCompany()') Edit

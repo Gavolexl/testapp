@@ -9,7 +9,7 @@ function IndexCtrl($scope, $http) {
     });
     $http.post('/companiessel').
     success(function(data, status, headers, config) {
-        $scope.companiessel = data.companiessel;
+        $scope.companiessel = data.companies;
     });
 }
 
