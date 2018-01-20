@@ -13,40 +13,6 @@ module.exports = function (app) {
     });
 
     app.post('/companies', (req, res) => {
-        /*console.log("3");
-        db.collection("notes").find({}).toArray(function(err, result) {
-            if (err) throw err;
-            res.json({
-                posts: result
-            });
-        });*/
-        /* companyModel.find({})..then(function(err, companies) {
-             if (err) throw err;
-
-             var jobQueries = [];
-
-             /!*company.getChildrenCompanies(function (err, children) {
-                 if (err) throw err;
-             })*!/
-
-             /!* companyModel.find({ parent: company.name }, function(err, companies) {
-                  if (err) throw err;
-                  company.children = companies;
-              })*!/
-             companies.forEach(function (company) {
-                 jobQueries.push(company);
-             });
-
-             return Promise.all(jobQueries);
-         }).then(function (listOfJob) {
-
-             res.json({
-                 companies: listOfJob
-             });
-
-         }).catch(function(error) {
-             res.status(500).send('one of the queries failed', error);
-         });*/
 
         var counter = 0;
         companyModel.find({parent:"root"}).exec()
@@ -89,14 +55,7 @@ module.exports = function (app) {
 
     app.get('/company/:id', (req, res) => {
         const id = req.params.id;
-        /*const details = { '_id': new ObjectID(id) };
-        db.collection('notes').findOne(details, (err, item) => {
-            if (err) {
-                res.send({'error':'An error has occurred'});
-            } else {
-                res.send({company:item});
-            }
-        });*/
+
         companyModel.findById(id, function(err, company) {
             if (err) throw err;
 
@@ -106,16 +65,7 @@ module.exports = function (app) {
     });
 
     app.post('/company', (req, res) => {
-        /* console.log(req);
-         db.collection('notes').insert(note, (err, result) => {
-             if (err) {
-                 res.send({ 'error': 'An error has occurred' });
-             } else {
-                 res.send(result.ops[0]);
-             }
-         });*/
 
-        console.log(req.body);
         // create a new user
         var company = new companyModel({
             name: req.body.name,
@@ -123,13 +73,15 @@ module.exports = function (app) {
             parent: req.body.parent
         });
 
-        console.log(company.name);
-// save the user
-        company.save(function(err) {
-            if (err) throw err;
+        if (req.body.name === undefined || req.body.balance === undefined) {
+            res.send({'error' : "Some field are empty"});
+        } else {
+            company.save(function (err) {
+                if (err) throw err;
 
-            res.send(company);
-        });
+                res.send(company);
+            });
+        }
     });
 
     app.delete('/company/:id', (req, res) => {

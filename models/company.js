@@ -1,36 +1,31 @@
 // grab the things we need
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-
+var wait = require('wait.for');
 // create a schema
 var companySchema = new Schema({
     name: String,
-    balance: Number,
+    balance: {type:Number},
     parent: String,
-    children: Array
+    children: Array,
+    childrenBalance: {type : Number,default:0},
 });
 
 companySchema.methods.getChildrenCompanies = async function() {
 
-    $jcount = 0;
-    await Company.find({ parent: this.name }).exec()
-        .then((result) => {
-            /*if (result !== undefined) {
-                console.log(this.name);
-                pname = this.name;
-                for ($j = 0; $j < result.length; $j++) {
-                   result[$j].getChildrenCompanies()
-                       .then(function (childchild) {
-                           console.log(childchild);
-                       })
-                }
+    this.childrenBalance = this.balance;
 
-            }else {
-                return "";
-            }*/
-            this.children = result;
-            return this.children;
-        });
+    const cursor = Company.find({ parent: this.name }).cursor();
+    for (let doc = await cursor.next(); doc != null; doc = await cursor.next()) {
+
+        await doc.getChildrenCompanies();
+
+        this.childrenBalance += doc.balance;
+        this.children.push(doc);
+    }
+
+
+
 };
 // the schema is useless so far
 // we need to create a model using it
