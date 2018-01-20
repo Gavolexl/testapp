@@ -10,18 +10,13 @@ var companySchema = new Schema({
     children: Array
 });
 
-companySchema.methods.getChildrenCompanies = function() {
+ companySchema.methods.getChildrenCompanies = async function() {
 
-    var query = Company.find({ parent: this.name }, function(err, companies) {
-        if (err) throw err;
-        this.children = companies;
-    });
-
-    query.then(function () {
-        console.log("2");
-        return this.children;
-    });
-
+   await Company.find({ parent: this.name }).exec()
+        .then((result) => {
+            this.children = result;
+            return this.children;
+        });
 };
 // the schema is useless so far
 // we need to create a model using it

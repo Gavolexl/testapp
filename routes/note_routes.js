@@ -48,15 +48,22 @@ module.exports = function (app) {
              res.status(500).send('one of the queries failed', error);
          });*/
 
-        companyModel.find({}).exec()
+        var counter = 0;
+        companyModel.find({parent:"root"}).exec()
             .then(function (companies) {
 
 
                 for ($i = 0; $i < companies.length; $i++) {
 
+                    companies[$i].getChildrenCompanies().then(function (data) {
+                        counter++;
+                        if (counter === companies.length) {
+                            res.json({companies:companies});
+                        }
+                    });
                 }
 
-                res.json({companies:results});
+
             })
 
     });

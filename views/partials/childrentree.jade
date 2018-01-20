@@ -1,0 +1,2 @@
+ul(ng-if="company.children") {{company.name}} | {{company.balance}}
+    li(ng-repeat="company in company.children", ng-include="'partials/childrentree'")
