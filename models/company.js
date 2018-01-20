@@ -1,7 +1,7 @@
 // grab the things we need
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var wait = require('wait.for');
+
 // create a schema
 var companySchema = new Schema({
     name: String,

@@ -7,6 +7,10 @@ function IndexCtrl($scope, $http) {
     success(function(data, status, headers, config) {
         $scope.companies = data.companies;
     });
+    $http.post('/companiessel').
+    success(function(data, status, headers, config) {
+        $scope.companiessel = data.companiessel;
+    });
 }
 
 function AddCompanyCtrl($scope, $http, $location) {
