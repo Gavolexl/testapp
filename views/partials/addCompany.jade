@@ -1,12 +1,11 @@
-h2 Add a new company
-label(for='name') Name:
-  input(ng-model='form.name', name='name')
-p Balance:
-  input(ng-model='form.balance',type='number', name='balance')
-p
-p Parent:
-  select(ng-model='form.parent')
-    option(ng-value='root', selected="selected") root
-    option(ng-repeat='company in companies', ng-value='{{company.name}}') {{company.name}}
-p
-  button(ng-click='submitCompany()') Submit Company
+div(class='add-container')
+  h2 Add a new company
+  label(for='name') Name:
+    input(ng-model='form.name', name='name')
+  p Balance:
+    input(ng-model='form.balance',type='number', name='balance')
+  p Parent:
+    select(ng-model='form.parent')
+      option(ng-value='root', selected="selected") root
+      option(ng-repeat='company in companies', ng-value='{{company.name}}') {{company.name}}
+  button(ng-click='submitCompany()') Submit

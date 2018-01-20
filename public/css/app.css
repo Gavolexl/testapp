@@ -36,6 +36,8 @@ body{
   font-family: sans-serif;
 }
 
+/* Menu buttons */
+
 .main-menu .menu-button{
   display: inline-block;
   margin-right: 30px;
@@ -75,6 +77,62 @@ body{
   margin-top: 50px;
   margin-left: 25px;
 }
+
+/* Companies tree */
+
+.companies-number{
+    background: #bfbfbf;
+    display: initial;
+    color: #fff;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+/* Add container */
+
+.add-container{
+    background: #f3f3f3;
+    width: 300px;
+    padding: 20px;
+    border-radius: 2px;
+}
+
+.add-container h2{
+    color: #212121;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.add-container input, .add-container select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+.add-container label, .add-container p{
+    color: #424242;
+    text-transform: lowercase;
+}
+
+.add-container button{
+    outline: none !important;
+    background-color: #F44336;
+    font-size: 13pt;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.add-container button:hover{
+    background-color: #E53935;
+}
+
 
 
 

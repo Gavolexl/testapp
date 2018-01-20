@@ -8,5 +8,4 @@ p Parent:
   select(name='parent')
     option(ng-value='root', selected="selected")
     option(ng-repeat='company in companies', ng-value='{{company.name}}') {{company.name}}
-p
-  button(ng-click='editCompany()') Edit Company
+button(ng-click='editCompany()') Edit Company

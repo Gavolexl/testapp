@@ -1,4 +1,4 @@
-p There are {{companies.length}} companies
+p(class='companies-number') There are {{companies.length}} companies:
 ul
   li(ng-repeat='company in companies', ng-include="'partials/childrentree'")
 
