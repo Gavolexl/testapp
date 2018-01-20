@@ -10,10 +10,24 @@ var companySchema = new Schema({
     children: Array
 });
 
- companySchema.methods.getChildrenCompanies = async function() {
+companySchema.methods.getChildrenCompanies = async function() {
 
-   await Company.find({ parent: this.name }).exec()
+    $jcount = 0;
+    await Company.find({ parent: this.name }).exec()
         .then((result) => {
+            /*if (result !== undefined) {
+                console.log(this.name);
+                pname = this.name;
+                for ($j = 0; $j < result.length; $j++) {
+                   result[$j].getChildrenCompanies()
+                       .then(function (childchild) {
+                           console.log(childchild);
+                       })
+                }
+
+            }else {
+                return "";
+            }*/
             this.children = result;
             return this.children;
         });

@@ -11,7 +11,7 @@ function IndexCtrl($scope, $http) {
 
 function AddCompanyCtrl($scope, $http, $location) {
     $scope.form = {};
-    $http.post('/companies').
+    $http.post('/companiessel').
     success(function(data, status, headers, config) {
         $scope.companies = data.companies;
     });
@@ -34,7 +34,7 @@ function ReadCompanyCtrl($scope, $http, $routeParams) {
 function EditCompanyCtrl($scope, $http, $location, $routeParams) {
     $scope.form = {};
 
-    $http.post('/companies').
+    $http.post('/companiessel').
     success(function(data, status, headers, config) {
         $scope.companies = data.companies;
     });

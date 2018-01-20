@@ -1,2 +1,8 @@
 ul(ng-if="company.children") {{company.name}} | {{company.balance}}
+    br
+    a(href='/readCompany/{{company._id}}') More
+    | -
+    a(href='/editCompany/{{company._id}}') Edit
+    | -
+    a(href='/deleteCompany/{{company._id}}') Delete
     li(ng-repeat="company in company.children", ng-include="'partials/childrentree'")

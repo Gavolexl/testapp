@@ -51,10 +51,7 @@ module.exports = function (app) {
         var counter = 0;
         companyModel.find({parent:"root"}).exec()
             .then(function (companies) {
-
-
                 for ($i = 0; $i < companies.length; $i++) {
-
                     companies[$i].getChildrenCompanies().then(function (data) {
                         counter++;
                         if (counter === companies.length) {
@@ -62,6 +59,28 @@ module.exports = function (app) {
                         }
                     });
                 }
+
+
+            })
+
+    });
+    app.post('/companiessel', (req, res) => {
+
+        var counter = 0;
+        companyModel.find().exec()
+            .then(function (companies) {
+
+                /*for ($i = 0; $i < companies.length; $i++) {
+
+                    companies[$i].getChildrenCompanies().then(function (data) {
+                        counter++;
+                        if (counter === companies.length) {
+                            res.json({companies:companies});
+                        }
+                    });
+                }*/
+
+                res.json({companies:companies});
 
 
             })
