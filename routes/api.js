@@ -1,25 +1,28 @@
 var ObjectID = require('mongodb').ObjectID;
+module.exports = function(app, db) {
+    console.log("1");
 
-var MongoClient    = require('mongodb').MongoClient;
-// module.exports = function(app, db) {
-//
-//
-// };
-MongoClient.connect("mongodb://root:root@ds251727.mlab.com:51727/test_base", (err, database) => {
-    if (err) return console.log(err);
-
-    db = database.db("test_base");
-    exports.posts = function (req, res) {
-        console.log(".5");
+    app.post('/api/posts', (req, res) => {
+        console.log("3");
         db.collection("notes").find({}).toArray(function(err, result) {
             if (err) throw err;
             res.json({
                 posts: result
             });
         });
-    };
+    });
 
-    exports.post = function (req, res) {
+    app.get('/', (req,res) => {
+        console.log("2");
+        res.render('index');
+    });
+    app.get('/partials/:name', (req, res) => {
+        console.log("8");
+        var name = req.params.name;
+        res.render('partials/' + name);
+    });
+
+    app.get('/api/post/:id', (req, res) => {
         console.log("111");
         const id = req.params.id;
         const details = { '_id': new ObjectID(id) };
@@ -30,11 +33,12 @@ MongoClient.connect("mongodb://root:root@ds251727.mlab.com:51727/test_base", (er
                 res.send(item);
             }
         });
-    };
+    });
 
-// POST
 
-    exports.addPost = function (req, res) {
+
+
+    app.post('/api/post', (req, res) => {
         console.log("4");
         const note = { text: req.body.text, title: req.body.title };
         db.collection('notes').insert(note, (err, result) => {
@@ -44,12 +48,22 @@ MongoClient.connect("mongodb://root:root@ds251727.mlab.com:51727/test_base", (er
                 res.send(result.ops[0]);
             }
         });
-    };
+    });
 
-// PUT
+    app.delete('/api/post/:id', (req, res) => {
+        const id = req.params.id;
+        const details = { '_id': new ObjectID(id) };
+        db.collection('notes').remove(details, (err, item) => {
+            if (err) {
+                res.send({'error':'An error has occurred'});
+            } else {
+                res.send('Note ' + id + ' deleted!');
+            }
+        });
+    });
 
-    exports.editPost = function (req, res) {
-        console.log("nice2");
+    app.put ('/api/post/:id', (req, res) => {
+        console.log("put");
         const id = req.params.id;
         const details = { '_id': new ObjectID(id) };
         const note = { text: req.body.body, title: req.body.title };
@@ -60,20 +74,11 @@ MongoClient.connect("mongodb://root:root@ds251727.mlab.com:51727/test_base", (er
                 res.send(note);
             }
         });
-    };
+    });
 
-// DELETE
+    app.get('*', (req,res) => {
+        console.log("9");
+        res.render('index');
+    });
 
-    exports.deletePost = function (req, res) {
-        console.log("nice");
-        const id = req.params.id;
-        const details = { '_id': new ObjectID(id) };
-        db.collection('notes').remove(details, (err, item) => {
-            if (err) {
-                res.send({'error':'An error has occurred'});
-            } else {
-                res.send('Note ' + id + ' deleted!');
-            }
-        });
-    };
-});
+};
