@@ -1,7 +1,12 @@
-h2 Edit post
-label(for='title') Title: 
-input(ng-model='form.title', name='title')
-p Body:
-textarea(ng-model='form.text', cols='50', rows='15')
+h2 Edit company
+label(for='name') Name:
+  input(ng-model='form.name', name='name')
+p Balance:
+  input(ng-model='form.balance',type='number', name='balance')
 p
-  button(ng-click='editCompany()') Edit Post
+p Parent:
+  select(name='parent')
+    option(ng-value='root', selected="selected")
+    option(ng-repeat='company in companies', ng-value='{{company.name}}') {{company.name}}
+p
+  button(ng-click='editCompany()') Edit Company

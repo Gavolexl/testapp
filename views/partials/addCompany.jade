@@ -5,7 +5,8 @@ p Balance:
   input(ng-model='form.balance',type='number', name='balance')
 p
 p Parent:
-  select(name='parent')
+  select(ng-model='form.parent')
+    option(ng-value='root', selected="selected") root
     option(ng-repeat='company in companies', ng-value='{{company.name}}') {{company.name}}
 p
   button(ng-click='submitCompany()') Submit Company

@@ -1,6 +1,6 @@
 p There are {{companies.length}} companies
 div(ng-repeat='company in companies')
-  h3 {{company.name}} | {{company.balance}}
+  ul {{company.name}} | {{company.balance}}
   div {{company.text}}
   a(href='/readCompany/{{company._id}}') More
   |  - 

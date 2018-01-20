@@ -7,8 +7,22 @@ var companySchema = new Schema({
     name: String,
     balance: Number,
     parent: String,
+    children: Array
 });
 
+companySchema.methods.getChildrenCompanies = function() {
+
+    var query = Company.find({ parent: this.name }, function(err, companies) {
+        if (err) throw err;
+        this.children = companies;
+    });
+
+    query.then(function () {
+        console.log("2");
+        return this.children;
+    });
+
+};
 // the schema is useless so far
 // we need to create a model using it
 var Company = mongoose.model('Company', companySchema);

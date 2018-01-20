@@ -20,14 +20,45 @@ module.exports = function (app) {
                 posts: result
             });
         });*/
+        /* companyModel.find({})..then(function(err, companies) {
+             if (err) throw err;
 
-        companyModel.find({}, function(err, companies) {
-            if (err) throw err;
+             var jobQueries = [];
 
-            res.json({
-                companies: companies
-            });
-        });
+             /!*company.getChildrenCompanies(function (err, children) {
+                 if (err) throw err;
+             })*!/
+
+             /!* companyModel.find({ parent: company.name }, function(err, companies) {
+                  if (err) throw err;
+                  company.children = companies;
+              })*!/
+             companies.forEach(function (company) {
+                 jobQueries.push(company);
+             });
+
+             return Promise.all(jobQueries);
+         }).then(function (listOfJob) {
+
+             res.json({
+                 companies: listOfJob
+             });
+
+         }).catch(function(error) {
+             res.status(500).send('one of the queries failed', error);
+         });*/
+
+        companyModel.find({}).exec()
+            .then(function (companies) {
+
+
+                for ($i = 0; $i < companies.length; $i++) {
+
+                }
+
+                res.json({companies:results});
+            })
+
     });
 
     app.get('/company/:id', (req, res) => {

@@ -1,5 +1,6 @@
 const express        = require('express');
 const mongoose       = require('mongoose');
+mongoose.Promise = require('bluebird');
 const bodyParser     = require('body-parser');
 const db             = require('./config/db');
 const app            = express.createServer();

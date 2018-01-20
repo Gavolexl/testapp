@@ -3,58 +3,69 @@
 /* Controllers */
 
 function IndexCtrl($scope, $http) {
-  $http.post('/companies').
+    $http.post('/companies').
     success(function(data, status, headers, config) {
-      $scope.companies = data.companies;
+        $scope.companies = data.companies;
     });
 }
 
 function AddCompanyCtrl($scope, $http, $location) {
-  $scope.form = {};
-  $scope.submitCompany = function () {
-    $http.post('/company', $scope.form).
-      success(function(data) {
-        $location.path('/');
-      });
-  };
+    $scope.form = {};
+    $http.post('/companies').
+    success(function(data, status, headers, config) {
+        $scope.companies = data.companies;
+    });
+
+    $scope.submitCompany = function () {
+        $http.post('/company', $scope.form).
+        success(function(data) {
+            $location.path('/');
+        });
+    };
 }
 
 function ReadCompanyCtrl($scope, $http, $routeParams) {
-  $http.get('/company/' + $routeParams.id).
+    $http.get('/company/' + $routeParams.id).
     success(function(data) {
-      $scope.company = data.company;
+        $scope.company = data.company;
     });
 }
 
 function EditCompanyCtrl($scope, $http, $location, $routeParams) {
-  $scope.form = {};
-  $http.get('/company/' + $routeParams.id).
-    success(function(data) {
-      $scope.form = data.company;
+    $scope.form = {};
+
+    $http.post('/companies').
+    success(function(data, status, headers, config) {
+        $scope.companies = data.companies;
     });
 
-  $scope.editCompany = function () {
-    $http.put('/company/' + $routeParams.id, $scope.form).
-      success(function(data) {
-        $location.url('/viewCompany/' + $routeParams.id);
-      });
-  };
+    $http.get('/company/' + $routeParams.id).
+    success(function(data) {
+        $scope.form = data.company;
+    });
+
+    $scope.editCompany = function () {
+        $http.put('/company/' + $routeParams.id, $scope.form).
+        success(function(data) {
+            $location.url('/viewCompany/' + $routeParams.id);
+        });
+    };
 }
 
 function DeleteCompanyCtrl($scope, $http, $location, $routeParams) {
-  $http.get('/company/' + $routeParams.id).
+    $http.get('/company/' + $routeParams.id).
     success(function(data) {
-      $scope.post = data.company;
+        $scope.post = data.company;
     });
 
-  $scope.deleteCompany = function () {
-    $http.delete('/company/' + $routeParams.id).
-      success(function(data) {
-        $location.url('/');
-      });
-  };
+    $scope.deleteCompany = function () {
+        $http.delete('/company/' + $routeParams.id).
+        success(function(data) {
+            $location.url('/');
+        });
+    };
 
-  $scope.home = function () {
-    $location.url('/');
-  };
+    $scope.home = function () {
+        $location.url('/');
+    };
 }
